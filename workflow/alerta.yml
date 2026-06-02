@@ -1,0 +1,21 @@
+name: Alerta ntfy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run Hola Mundo
+        run: node app.js
+
+      - name: Send notification to ntfy
+        run: |
+          curl -d "Nuevo push en la rama main del repositorio hola-mundo-pages" https://ntfy.sh/devops-itla
